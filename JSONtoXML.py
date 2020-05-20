@@ -23,7 +23,7 @@ finally:
 
 def parse_element(root, json_dict):
 	for key in json_dict:
-		if type(json_dict[key]) is (dict or list):
+		if type(json_dict[key]) is (dict or list or tuple):
 
 			sub_dict = json_dict[key]
 			sub_element = ElementTree.SubElement(root, str(key))
