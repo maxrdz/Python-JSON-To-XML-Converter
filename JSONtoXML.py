@@ -23,19 +23,19 @@ finally:
 
 def parse_element(root, json_dict):
 	for key in json_dict:
-		if type(json_dict[key]) is dict:
+		if type(json_dict[key]) is (dict or list):
 
 			sub_dict = json_dict[key]
-			sub_element = ElementTree.SubElement(root, key)
+			sub_element = ElementTree.SubElement(root, str(key))
 			parse_element(sub_element, sub_dict)
 
 		else:
-			ElementTree.SubElement(root, key).text = str(json_dict[key])
+			ElementTree.SubElement(root, str(key)).text = str(json_dict[key])
 
 
 # Creating XML Elements
 
-xml = ElementTree.Element("root")  # Create base element that will hold json data
+xml = ElementTree.Element("XML")  # Create base element that will hold json data
 
 parse_element(xml, jsonDict)
 
